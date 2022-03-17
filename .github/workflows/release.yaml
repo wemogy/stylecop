@@ -5,7 +5,7 @@ on:
     branches:
       - release/**
 
-jobs: 
+jobs:
   release:
     runs-on: ubuntu-latest
     steps:
@@ -13,23 +13,29 @@ jobs:
         id: next-version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - uses: actions/checkout@v2
-      
+
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
           source-url: https://nuget.pkg.github.com/wemogy/index.json
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_FEED_TOKEN }}
-          
+
+      - name: Set Version in .props file
+        run: |
+          export VERSION=${{ steps.next-version.outputs.next-version }}
+          envsubst < Wemogy.StyleCop.template.props > Wemogy.StyleCop.props
+          cat Wemogy.StyleCop.props
+
       - name: Create Nuget package
         run: nuget pack -Version ${{ steps.next-version.outputs.next-version }}
-        
+
       - name: Publish Nuget package
         run: dotnet nuget push **/**/*.nupkg --skip-duplicate --source https://nuget.pkg.github.com/${{ github.repository_owner }} --api-key ${{ secrets.GITHUB_TOKEN }}
         working-directory: ${{ steps.release-version.outputs.folder }}
-        
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
