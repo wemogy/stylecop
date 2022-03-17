@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Wemogy.StyleCop</id>
+    <version>1.0.0</version>
+    <description></description>
+    <authors>wemogy GmbH</authors>
+    <dependencies>
+      <dependency id="StyleCop.Analyzers" version="1.1.118" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="StyleCop.ruleset" target="" />
+    <file src="stylecop.json" target="" />
+    <file src="CSharp.Styleguide.props" target="build" />
+  </files>
+</package>
