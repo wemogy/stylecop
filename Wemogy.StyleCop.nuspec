@@ -3,15 +3,16 @@
   <metadata>
     <id>Wemogy.StyleCop</id>
     <version>1.0.0</version>
-    <description></description>
+    <description>Shared Coding Style</description>
     <authors>wemogy GmbH</authors>
+    <url>https://github.com/wemogy/stylecop</url>
     <dependencies>
       <dependency id="StyleCop.Analyzers" version="1.1.118" />
     </dependencies>
   </metadata>
   <files>
-    <file src="StyleCop.ruleset" target="" />
-    <file src="stylecop.json" target="" />
-    <file src="CSharp.Styleguide.props" target="build" />
+    <file src="stylecop.json" />
+    <file src="Wemogy.StyleCop.ruleset" />
+    <file src="Wemogy.StyleCop.props" target="build" />
   </files>
 </package>
