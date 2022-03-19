@@ -23,11 +23,6 @@ jobs:
         env:
           NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_FEED_TOKEN }}
 
-      - name: Set Version in .props file
-        run: |
-          export VERSION=${{ steps.next-version.outputs.next-version }}
-          envsubst < Wemogy.StyleCop.template.props > Wemogy.StyleCop.props
-
       - name: Create Nuget package
         run: nuget pack -Version ${{ steps.next-version.outputs.next-version }}
 
