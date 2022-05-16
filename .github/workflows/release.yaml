@@ -24,7 +24,7 @@ jobs:
         run: nuget pack -Version ${{ steps.next-version.outputs.next-version }}
 
       - name: Publish Nuget package
-        run: dotnet nuget push **/**/*.nupkg --skip-duplicate --api-key ${{ secrets.PUBLIC_NUGET_TOKEN }}
+        run: dotnet nuget push **/**/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUBLIC_NUGET_TOKEN }}
         working-directory: ${{ steps.release-version.outputs.folder }}
 
       - name: Create GitHub Release
