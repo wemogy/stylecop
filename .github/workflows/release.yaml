@@ -19,9 +19,6 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 5.0.x
-          source-url: https://nuget.pkg.github.com/wemogy/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.PACKAGE_FEED_TOKEN }}
 
       - name: Create Nuget package
         run: nuget pack -Version ${{ steps.next-version.outputs.next-version }}
