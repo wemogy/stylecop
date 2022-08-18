@@ -5,6 +5,9 @@
       "systemUsingDirectivesFirst": true,
       "usingDirectivesPlacement": "outsideNamespace",
       "blankLinesBetweenUsingGroups": "omit"
+    },
+    "documentationRules": {
+      "fileNamingConvention": "metadata"
     }
   }
 }
