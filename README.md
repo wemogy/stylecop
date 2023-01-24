@@ -6,7 +6,7 @@ To use this set of StyleCop coding style rules automatically in all projects of 
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
     <ItemGroup>
-        <PackageReference Include="Wemogy.StyleCop" Version="0.1.5" />
+        <PackageReference Include="Wemogy.StyleCop" Version="0.2.0" />
     </ItemGroup>
 </Project>
 ```
