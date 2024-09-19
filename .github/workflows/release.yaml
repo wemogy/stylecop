@@ -7,18 +7,22 @@ on:
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: "write"
+      packages: "write"
     steps:
       - uses: wemogy/next-version-action@2.0.2
         id: next-version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - uses: actions/setup-dotnet@v1
+      - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 5.0.x
+          dotnet-version: 8.0.x
 
       - name: Create Nuget package
         run: nuget pack -Version ${{ steps.next-version.outputs.next-version }}
@@ -28,7 +32,7 @@ jobs:
         working-directory: ${{ steps.release-version.outputs.folder }}
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.next-version.outputs.next-version-name }}
           name: Version ${{ steps.next-version.outputs.next-version }}
